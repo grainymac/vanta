@@ -1,0 +1,20 @@
+.hero-container {
+    background: url('../../assets/hero.jpg') center/cover no-repeat;
+    height: 600px; /* Adjust the height as needed */
+  }
+
+  .hero-text-container {
+    color: #fff;
+    margin-left: 250px;
+    padding-top: 50px;
+  }
+
+  .hero-text-container h2{
+    font-family: 'Metal Mania';
+    font-size: 5rem;
+    text-shadow: 2px 2px 4px #000;;
+  }
+
+  .hero-text-container p {
+    font-size: 1.5rem;
+  }

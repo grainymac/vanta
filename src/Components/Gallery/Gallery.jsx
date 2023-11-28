@@ -1,20 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Gallery.css';
-import LightGallery from 'lightgallery/react/Lightgallery.es5';
-
-import lgThumbnail from 'lightgallery/plugins/thumbnail'
-import lgZoom from 'lightgallery/plugins/zoom'
-import lgAutoplay from 'lightgallery/plugins/autoplay'
-import lgShare from 'lightgallery/plugins/share'
-import lgRotate from 'lightgallery/plugins/rotate'
-
-import 'lightgallery/css/lightgallery.css';
-import 'lightgallery/css/lg-zoom.css';
-import 'lightgallery/css/lg-thumbnail.css'
-import 'lightgallery/css/lg-autoplay.css'
-import 'lightgallery/css/lg-share.css'
-import 'lightgallery/css/lg-rotate.css'
-
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
 
 import img1 from './assets/1-_DSC7910.jpg'
 import img2 from './assets/2-_DSC7908.jpg'
@@ -154,22 +140,45 @@ const images = [
   img67,
 ];
 
-const Images = () => {
+const Gallery = () => {
+
+  const [data, setData] = useState({ img: '', idx: 0 })
+
+  const viewImage = (img, idx) => {
+    setData({ img, idx })
+  }
+
+  const imageAction = (action) => {
+    let idx = data.idx
+    if (action === 'next-img') {
+      setData({ img: images[idx + 1], idx: idx + 1})
+    }
+    if (action === 'previous-img') {
+      setData({ img: images[idx - 1], idx: idx - 1})
+    }
+  }
 
   return (
-    <div className='gallery-container'>
-      <LightGallery
-        speed={500}
-        plugins={[lgThumbnail, lgShare, lgRotate, lgAutoplay, lgZoom]}
-      >
-        {images.map((image, index) => (
-          <a key={`img${index + 1}`} href={image}>
-            <img src={image} alt={`img${index + 1}`} className='gallery-image'/>
-          </a>
-        ))}
-      </LightGallery>
-    </div>
+    <>
+      {data.img &&
+        <div style={{ width: '100%', height: '100vh', background: 'black', position: 'fixed', display: 'flex', justifyContent: 'center', alignContent: 'center', overflow: 'hidden', }}>
+          <button style={{ position: 'absolute', top: '10px', right: '10px' }}>X</button>
+          <button onClick={() => imageAction('previous-img')}>Previous</button>
+          <img src={data.img} alt='' style={{ width: 'auto', maxWidth: '90%', maxHeight: '90%' }} />
+          <button onClick={() => imageAction('next-img')}>Next</button>
+        </div>
+      }
+      <div className='gallery-container'>
+        <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+          <Masonry gutter='20px'>
+            {images.map((image, idx) => (
+              <img key={idx} src={image} style={{ width: '100%', display: 'block', cursor: 'pointer' }} alt='' onClick={() => viewImage(image, idx)} />
+            ))}
+          </Masonry>
+        </ResponsiveMasonry>
+      </div>
+    </>
   )
 }
 
-export default Images
+export default Gallery

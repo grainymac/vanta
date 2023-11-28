@@ -1,12 +1,20 @@
 import React from 'react';
 import './Gallery.css';
-import LightGallery from 'lightgallery/react';
+import LightGallery from 'lightgallery/react/Lightgallery.es5';
+
+import lgThumbnail from 'lightgallery/plugins/thumbnail'
+import lgZoom from 'lightgallery/plugins/zoom'
+import lgAutoplay from 'lightgallery/plugins/autoplay'
+import lgShare from 'lightgallery/plugins/share'
+import lgRotate from 'lightgallery/plugins/rotate'
+
 import 'lightgallery/css/lightgallery.css';
 import 'lightgallery/css/lg-zoom.css';
-import 'lightgallery/css/lg-thumbnail.css';
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
-import lgZoom from 'lightgallery/plugins/zoom';
-import Masonry from 'react-masonry-css';
+import 'lightgallery/css/lg-thumbnail.css'
+import 'lightgallery/css/lg-autoplay.css'
+import 'lightgallery/css/lg-share.css'
+import 'lightgallery/css/lg-rotate.css'
+
 
 import img1 from './assets/1-_DSC7910.jpg'
 import img2 from './assets/2-_DSC7908.jpg'
@@ -77,99 +85,91 @@ import img66 from './assets/66-_DSC7707.jpg';
 import img67 from './assets/67-_DSC7703.jpg';
 
 const images = [
-    img1,
-    img2,
-    img3,
-    img4,
-    img5,
-    img6,
-    img7,
-    img8,
-    img9,
-    img10,
-    img11,
-    img12,
-    img13,
-    img14,
-    img15,
-    img16,
-    img17,
-    img18,
-    img19,
-    img20,
-    img21,
-    img22,
-    img23,
-    img24,
-    img25,
-    img26,
-    img27,
-    img28,
-    img29,
-    img30,
-    img31,
-    img32,
-    img33,
-    img34,
-    img35,
-    img36,
-    img37,
-    img38,
-    img39,
-    img40,
-    img41,
-    img42,
-    img43,
-    img44,
-    img45,
-    img46,
-    img47,
-    img48,
-    img49,
-    img50,
-    img51,
-    img52,
-    img53,
-    img54,
-    img55,
-    img56,
-    img57,
-    img58,
-    img59,
-    img60,
-    img61,
-    img62,
-    img63,
-    img64,
-    img65,
-    img66,
-    img67,
+  img1,
+  img2,
+  img3,
+  img4,
+  img5,
+  img6,
+  img7,
+  img8,
+  img9,
+  img10,
+  img11,
+  img12,
+  img13,
+  img14,
+  img15,
+  img16,
+  img17,
+  img18,
+  img19,
+  img20,
+  img21,
+  img22,
+  img23,
+  img24,
+  img25,
+  img26,
+  img27,
+  img28,
+  img29,
+  img30,
+  img31,
+  img32,
+  img33,
+  img34,
+  img35,
+  img36,
+  img37,
+  img38,
+  img39,
+  img40,
+  img41,
+  img42,
+  img43,
+  img44,
+  img45,
+  img46,
+  img47,
+  img48,
+  img49,
+  img50,
+  img51,
+  img52,
+  img53,
+  img54,
+  img55,
+  img56,
+  img57,
+  img58,
+  img59,
+  img60,
+  img61,
+  img62,
+  img63,
+  img64,
+  img65,
+  img66,
+  img67,
 ];
 
 const Images = () => {
 
-    const onInit = () => {
-        console.log('lightGallery has been initialized');
-    }
-
-    const breakpointColumnsObj = {
-    default: 4,
-    1100: 3,
-    700: 2,
-    500: 1,
-  };
-
   return (
-    <section className="images-container">
-      <LightGallery onInit={onInit} speed={400} plugins={[lgThumbnail, lgZoom]} animateThumb={false} allowMediaOverlap={false} appendThumbnailsTo='.lg-outer' addClass='lg-custom-thumbnails'>
-          {images.map((image, index) => (
-            <a key={`img${index + 1}`} href={image}>
-              <img alt={`img${index + 1}`} src={image} style={{ maxWidth: '100%', height: 'auto' }} />
-            </a>
-          ))}
+    <div className='gallery-container'>
+      <LightGallery
+        speed={500}
+        plugins={[lgThumbnail, lgShare, lgRotate, lgAutoplay, lgZoom]}
+      >
+        {images.map((image, index) => (
+          <a key={`img${index + 1}`} href={image}>
+            <img src={image} alt={`img${index + 1}`} className='gallery-image'/>
+          </a>
+        ))}
       </LightGallery>
-    </section>
-  );
-};
+    </div>
+  )
+}
 
 export default Images

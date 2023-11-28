@@ -7,11 +7,12 @@ import Footer from '../Footer/Footer'
 const App = () => {
   return (
     <>
-    <Header />
-    <main>
-      <Hero />
-      <Gallery />
-    </main>
+      <Header />
+      <main>
+        <Hero />
+        <Gallery />
+      </main>
+      <Footer />
     </>
   );
 }

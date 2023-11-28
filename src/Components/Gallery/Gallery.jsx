@@ -156,13 +156,25 @@ const Gallery = () => {
     if (action === 'previous-img') {
       setData({ img: images[idx - 1], idx: idx - 1})
     }
+    if (!action) {
+      setData({ img: '', idx: 0})
+    }
   }
 
   return (
     <>
       {data.img &&
-        <div style={{ width: '100%', height: '100vh', background: 'black', position: 'fixed', display: 'flex', justifyContent: 'center', alignContent: 'center', overflow: 'hidden', }}>
-          <button style={{ position: 'absolute', top: '10px', right: '10px' }}>X</button>
+        <div style={{ 
+          width: '100%', 
+          height: '100vh', 
+          background: 'white', 
+          position: 'absolute', 
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          overflow: 'hidden', 
+        }}>
+          <button onClick={() => imageAction()} style={{ position: 'absolute', top: '10px', right: '10px' }}>X</button>
           <button onClick={() => imageAction('previous-img')}>Previous</button>
           <img src={data.img} alt='' style={{ width: 'auto', maxWidth: '90%', maxHeight: '90%' }} />
           <button onClick={() => imageAction('next-img')}>Next</button>

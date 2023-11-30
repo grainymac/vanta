@@ -161,6 +161,10 @@ const Gallery = () => {
     }
   }
 
+  const isMobile = window.innerWidth <= 768;
+
+  const handleClick = isMobile ? null : (img, idx) => viewImage(img, idx);
+
   return (
     <>
       {data.img &&
@@ -182,10 +186,10 @@ const Gallery = () => {
         </div>
       }
       <div className='gallery-container'>
-        <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
-          <Masonry gutter='50px'>
+        <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3}}>
+          <Masonry gutter='20px'>
             {images.map((image, idx) => (
-              <img key={idx} src={image} className='gallery-image' style={{ width: '100%', display: 'block', cursor: 'pointer' }} alt='' onClick={() => viewImage(image, idx)} />
+              <img key={idx} src={image} className='gallery-image' style={{ width: '100%', display: 'box', cursor: 'pointer' }} alt='' />
             ))}
           </Masonry>
         </ResponsiveMasonry>

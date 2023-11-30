@@ -6,14 +6,11 @@ import Footer from '../Footer/Footer'
 
 const App = () => {
   return (
-    <>
+    <div className='app-container'>
       <Header />
-      <main>
-        <Hero />
-        <Gallery />
-      </main>
+      <Gallery />
       <Footer />
-    </>
+    </div>
   );
 }
 

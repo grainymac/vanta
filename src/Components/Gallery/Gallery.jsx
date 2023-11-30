@@ -151,29 +151,30 @@ const Gallery = () => {
   const imageAction = (action) => {
     let idx = data.idx
     if (action === 'next-img') {
-      setData({ img: images[idx + 1], idx: idx + 1})
+      setData({ img: images[idx + 1], idx: idx + 1 })
     }
     if (action === 'previous-img') {
-      setData({ img: images[idx - 1], idx: idx - 1})
+      setData({ img: images[idx - 1], idx: idx - 1 })
     }
     if (!action) {
-      setData({ img: '', idx: 0})
+      setData({ img: '', idx: 0 })
     }
   }
 
   return (
     <>
       {data.img &&
-        <div style={{ 
-          width: '100%', 
-          height: '100vh', 
-          background: 'white', 
-          position: 'absolute', 
-          display: 'flex', 
-          justifyContent: 'center', 
-          alignItems: 'center', 
-          overflow: 'hidden', 
-        }}>
+        <div className='gallery-popup'
+          style={{
+            width: '100%',
+            height: '100vh',
+            background: 'white',
+            position: 'absolute',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            overflow: 'hidden',
+          }}>
           <button onClick={() => imageAction()} style={{ position: 'absolute', top: '10px', right: '10px' }}>X</button>
           <button onClick={() => imageAction('previous-img')}>Previous</button>
           <img src={data.img} alt='' style={{ width: 'auto', maxWidth: '90%', maxHeight: '90%' }} />
@@ -182,9 +183,9 @@ const Gallery = () => {
       }
       <div className='gallery-container'>
         <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
-          <Masonry gutter='20px'>
+          <Masonry gutter='50px'>
             {images.map((image, idx) => (
-              <img key={idx} src={image} style={{ width: '100%', display: 'block', cursor: 'pointer' }} alt='' onClick={() => viewImage(image, idx)} />
+              <img key={idx} src={image} className='gallery-image' style={{ width: '100%', display: 'block', cursor: 'pointer' }} alt='' onClick={() => viewImage(image, idx)} />
             ))}
           </Masonry>
         </ResponsiveMasonry>

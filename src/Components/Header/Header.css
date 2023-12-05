@@ -5,6 +5,7 @@
   align-items: center;
   padding: 10px;
   color: #f2f4f3;
+  background-color: #000;
 }
 
 .header-title {
@@ -16,4 +17,8 @@
 .header-text {
   font-family: 'Play', sans-serif;
   font-size: 20px;
+}
+
+.vanta-logo {
+  height: 7rem;
 }

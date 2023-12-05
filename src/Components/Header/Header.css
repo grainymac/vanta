@@ -5,7 +5,6 @@
   align-items: center;
   padding: 10px;
   color: #f2f4f3;
-  background-color: #000;
 }
 
 .header-title {
@@ -21,4 +20,10 @@
 
 .vanta-logo {
   height: 7rem;
+  border-radius: 100%;
+  border: 5px solid #3d3d3d8e;
+}
+
+.vanta-logo:hover {
+  border: 5px solid rgb(236, 212, 1);
 }
